@@ -131,7 +131,7 @@
 
   <footer>
     Pontuação = <b>50% leitura</b> (livros) + <b>50% cursos</b> (horas ÷ 25h). Cada pessoa monta seu PDI no ClickUp e o placar lê o progresso real todo dia.<br>
-    Sem julgamento — é sobre <b>evoluir junto</b>. 🚀 &nbsp;·&nbsp; Atualizado em 24/jul/2026.
+    Sem julgamento — é sobre <b>evoluir junto</b>. 🚀 &nbsp;·&nbsp; Atualizado em 24/jul/2026, 16h34.
   </footer>
 </div>
 
@@ -139,35 +139,34 @@
 // n=nome, t=time, p=pontuação total (real), lv=leitura%, hrs=horas de curso, pag=páginas, py=pontuação anterior
 const P=[
  {n:"Laurence Tataren",t:"Diretoria",p:82,lv:51.7,hrs:28.1,pag:497,py:82},
- {n:"Elaine Oliveira",t:"Operação",p:86,lv:47.5,hrs:31.2,pag:205,py:72},
+ {n:"Elaine Oliveira",t:"Operação",p:86,lv:47.5,hrs:31.2,pag:205,py:86},
  {n:"Gabriela Motta",t:"Financeiro",p:71,lv:90,hrs:13,pag:229,py:71},
  {n:"Danuzi Engel",t:"Comercial",p:57,lv:100,hrs:3.4,pag:233,py:57},
  {n:"Fabiano Sousa",t:"Operação",p:57,lv:0,hrs:28.4,pag:0,py:57},
  {n:"Karine Graczyk",t:"FTL",p:50,lv:80,hrs:5,pag:114,py:50},
  {n:"Ana Julia Lima",t:"Comercial",p:45,lv:67,hrs:5.8,pag:192,py:45},
+ {n:"Eduardo de Oliveira",t:"Operação",p:44,lv:87.5,hrs:0,pag:188,py:44},
  {n:"Lucas Santos",t:"Operação",p:42,lv:84.5,hrs:0,pag:447,py:42},
+ {n:"Stefani Neves",t:"Financeiro",p:43,lv:50,hrs:9,pag:174,py:38},
  {n:"Felipe Ribeiro",t:"Financeiro",p:41,lv:13,hrs:17.4,pag:35,py:41},
- {n:"João Pedro",t:"Projetos",p:39,lv:5,hrs:18.4,pag:13,py:39},
  {n:"Giovane Machado",t:"FTL",p:39,lv:38.5,hrs:9.8,pag:104,py:39},
- {n:"Stefani Neves",t:"Financeiro",p:38,lv:50,hrs:6.6,pag:174,py:38},
- {n:"Eduardo de Oliveira",t:"Operação",p:44,lv:87.5,hrs:0,pag:188,py:38},
  {n:"Brenda dos Santos",t:"Sonar",p:35,lv:41,hrs:7.1,pag:144,py:35},
+ {n:"Antony Lima",t:"Sonar",p:31,lv:62.5,hrs:0,pag:233,py:31},
  {n:"Suellen Lima",t:"Financeiro",p:31,lv:41.5,hrs:5.3,pag:146,py:31},
  {n:"Larissa Lima",t:"Sonar",p:29,lv:51,hrs:1.6,pag:100,py:29},
  {n:"Leticia Samara",t:"Projetos",p:26,lv:22,hrs:7.4,pag:74,py:26},
  {n:"Rodrigo dos Santos",t:"Operação",p:22,lv:45,hrs:0,pag:297,py:22},
  {n:"Fernando Alves",t:"Projetos",p:16,lv:0,hrs:8,pag:0,py:16},
+ {n:"Rony Fiel",t:"Financeiro",p:15,lv:25,hrs:1,pag:61,py:7},
+ {n:"Fernando Pereira",t:"Projetos",p:12,lv:0,hrs:6,pag:0,py:12},
  {n:"Luiz Cardoso",t:"Sonar",p:11,lv:17,hrs:1.4,pag:42,py:11},
- {n:"Fernando Pereira",t:"Projetos",p:12,lv:0,hrs:6,pag:0,py:9},
  {n:"Carlos Peixoto",t:"Operação",p:9,lv:7.5,hrs:2.6,pag:38,py:9},
- {n:"Rony Fiel",t:"Financeiro",p:7,lv:10,hrs:1,pag:24,py:7},
+ {n:"Bruno Henrique",t:"Sonar",p:8,lv:0,hrs:3.8,pag:0,py:5},
  {n:"Kléber Costa",t:"Operação",p:7,lv:13.5,hrs:0,pag:69,py:7},
  {n:"Gustavo Marques",t:"Comercial",p:6,lv:11.7,hrs:0,pag:90,py:6},
- {n:"Bruno Henrique",t:"Sonar",p:5,lv:0,hrs:2.3,pag:0,py:5},
  {n:"Gabrieli Muneretto",t:"Comercial",p:3,lv:0,hrs:1.6,pag:0,py:3},
  {n:"Iesus Dunkley",t:"Projetos",p:0,lv:0,hrs:0,pag:0,py:0},
  {n:"Gustavo Kropiwiec",t:"Projetos",p:0,lv:0,hrs:0,pag:0,py:0},
- {n:"Antony Lima",t:"Sonar",p:31,lv:62.5,hrs:0,pag:233,py:0},
  {n:"Dhiego Moura",t:"Sonar",p:0,lv:0,hrs:0,pag:0,py:0},
  {n:"Alessandra Ferraz",t:"Sonar",p:0,lv:0,hrs:0,pag:0,py:0},
  {n:"Luzinete Souza",t:"Sonar",p:0,lv:0,hrs:0,pag:0,py:0},
@@ -175,7 +174,6 @@ const P=[
  {n:"João André",t:"Operação",p:0,lv:0,hrs:0,pag:0,py:0},
  {n:"Thomas Vargas",t:"Operação",p:0,lv:0,hrs:0,pag:0,py:0},
  {n:"Cristiane Ramos",t:"Comercial",p:0,lv:0,hrs:0,pag:0,py:0},
- {n:"Leidiane Garcia",t:"Comercial",p:0,lv:0,hrs:0,pag:0,py:0},
  {n:"Gabriel Silva",t:"Marketing",p:0,lv:0,hrs:0,pag:0,py:0},
 ];
 const COLOR={Projetos:"#a77bff",Comercial:"#ffb35c",Sonar:"#6ea8ff",Operação:"#3ddc84",Financeiro:"#4fd0e0",FTL:"#ff7a59",Marketing:"#e879f9",Diretoria:"#ffd15c"};
