@@ -63,6 +63,7 @@ function isPersonCardName(name) {
   if (!n) return false;
   if (n.startsWith("modelo")) return false;
   if (n.includes("exemplo")) return false; // "[EXEMPLO – modelo novo] ..."
+  if (n.includes(":") || n.includes("*")) return false; // título de livro/curso solto na raiz, não é pessoa
   return true;
 }
 
