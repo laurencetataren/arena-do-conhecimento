@@ -62,7 +62,7 @@ function isPersonCardName(name) {
   const n = (name || "").trim().toLowerCase();
   if (!n) return false;
   if (n.startsWith("modelo")) return false;
-  if (n.includes("[exemplo]")) return false;
+  if (n.includes("exemplo")) return false; // "[EXEMPLO – modelo novo] ..."
   return true;
 }
 
@@ -92,9 +92,10 @@ module.exports = async (req, res) => {
 
     for (const [listId, team] of Object.entries(LISTS)) {
       const tasks = await fetchList(listId);
-      // 1ª passada: cards-pessoa (tarefas de topo)
+      // 1ª passada: cards-pessoa (tarefas de topo). Ignora atividades soltas na raiz
+      // (livro/curso órfão): card-pessoa NÃO tem o campo "Atividade" preenchido.
       for (const t of tasks) {
-        if (!t.parent && isPersonCardName(t.name) && !EXCLUDE.has((t.name || "").trim())) {
+        if (!t.parent && isPersonCardName(t.name) && !dropdownLabel(cf(t, F_ATIV)) && !EXCLUDE.has((t.name || "").trim())) {
           ensure(t.id, (t.name || "").trim(), team);
         }
       }
@@ -132,11 +133,18 @@ module.exports = async (req, res) => {
       };
     });
 
-    P.sort((a, b) => b.p - a.p || b.pag - a.pag || a.n.localeCompare(b.n));
+    // Dedup por nome (cards duplicados da mesma pessoa): fica o registro mais ativo
+    const byName = {};
+    for (const row of P) {
+      const key = row.n.toLowerCase();
+      const cur = byName[key];
+      if (!cur || (row.pag + row.hrs * 10) > (cur.pag + cur.hrs * 10)) byName[key] = row;
+    }
+    const P2 = Object.values(byName).sort((a, b) => b.p - a.p || b.pag - a.pag || a.n.localeCompare(b.n));
 
     res.setHeader("Cache-Control", "public, s-maxage=300, stale-while-revalidate=600");
     res.setHeader("Content-Type", "application/json; charset=utf-8");
-    res.status(200).json({ updatedAt: new Date().toISOString(), count: P.length, P });
+    res.status(200).json({ updatedAt: new Date().toISOString(), count: P2.length, P: P2 });
   } catch (e) {
     res.setHeader("Cache-Control", "no-store");
     res.status(500).json({ error: String((e && e.message) || e) });
