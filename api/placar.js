@@ -2,7 +2,8 @@
 // e devolve o placar do PDI Ciclo 4 já calculado.
 // A chave do ClickUp fica só aqui no servidor (env var CLICKUP_TOKEN), nunca no navegador.
 
-const TOKEN = process.env.CLICKUP_TOKEN;
+// Limpa qualquer caractere invisível/não-ASCII que possa ter grudado no token via copiar/colar
+const TOKEN = (process.env.CLICKUP_TOKEN || "").replace(/[^\x20-\x7E]/g, "").trim();
 
 // Listas do folder "PDI Ciclo 4" (RH excluída de propósito)
 const LISTS = {
