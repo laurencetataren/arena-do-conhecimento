@@ -122,7 +122,7 @@ module.exports = async (req, res) => {
     const P = Object.values(people).map((p) => {
       const bookPct = p.books.length ? p.books.reduce((a, b) => a + b, 0) / p.books.length : 0;
       const cursosPct = (p.hours / META_CURSO_HORAS) * 100;
-      const pv = Math.round(0.5 * bookPct + 0.5 * cursosPct); // real, pode passar de 100
+      const pv = Math.min(100, Math.round(0.5 * bookPct + 0.5 * cursosPct));
       return {
         n: p.n,
         t: p.t,
